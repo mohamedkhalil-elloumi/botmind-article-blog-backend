@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "shx rm -rf dist/ && tsc",
+    "build": "rimraf dist && tsc",
     "serve": "tsc-watch --onSuccess \"nodemon dist/index.js\""
   },
   "author": "Mohamed Khalil Elloumi",

@@ -25,6 +25,7 @@ export async function register(req: Request, res: Response) {
       data: payload,
     });
   } catch (err) {
+    console.log(err);
     if (String(err).includes("Email Taken")) {
       return res.status(400).json({
         error: true,

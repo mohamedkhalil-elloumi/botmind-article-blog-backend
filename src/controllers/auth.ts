@@ -32,6 +32,7 @@ export async function register(req: Request, res: Response) {
         message: "Email is taken",
       });
     }
+    console.log(err);
     return res.status(500).json({
       error: true,
       message: "An internal server error has occurred",
@@ -59,6 +60,7 @@ export async function login(req: Request, res: Response) {
         message: "User does not exist",
       });
     } else {
+      console.log(error);
       return res.status(500).json({
         error: true,
         message: "An internal server error has occurred",
@@ -75,6 +77,7 @@ export async function deleteUser(req: Request, res: Response) {
       message: "User deleted",
     });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({
       error: true,
       message: "An internal server error has occurred",

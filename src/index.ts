@@ -16,7 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 //setup database connection
 (async () => {
   try {
+    console.log("env", process.env.POSTGRES_URL);
     const connection = await createConnection();
+    console.log("connection", connection);
     console.log("Connection to Database established");
   } catch (err) {
     console.log("DB Connection Error: " + err);

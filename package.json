@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "shx rm -rf dist/ && tsc",
+    "build": "rimraf dist && tsc",
     "start": "ts-node src/index.ts",
     "dev": "tsc-watch --onSuccess \"nodemon dist/index.js\""
   },

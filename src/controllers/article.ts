@@ -9,6 +9,7 @@ const articleService = new ArticleService();
  * @param res
  */
 
+// get all articles and send them in JSON payload
 export async function getArticle(req: Request, res: Response) {
   try {
     const payload = await articleService.readArticles();
@@ -24,6 +25,7 @@ export async function getArticle(req: Request, res: Response) {
   }
 }
 
+// create and article and return it to frontend
 export async function createArticle(req: Request, res: Response) {
   const { user_id, content } = req.body;
   try {
@@ -47,6 +49,7 @@ export async function createArticle(req: Request, res: Response) {
   }
 }
 
+//update the content of one article
 export async function updateArticle(req: Request, res: Response) {
   const article_id = Number(req.params.id);
   const { content } = req.body;
@@ -71,6 +74,7 @@ export async function updateArticle(req: Request, res: Response) {
   }
 }
 
+// get all the articles of one single user
 export async function getArticleByUser(req: Request, res: Response) {
   const user_id = Number(req.params.id);
   try {
@@ -87,6 +91,7 @@ export async function getArticleByUser(req: Request, res: Response) {
   }
 }
 
+// delete a user's article
 export async function deleteArticle(req: Request, res: Response) {
   const article_id = Number(req.params.id);
   try {

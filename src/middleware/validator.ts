@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import Joi from "joi";
 
+// schema to verify the input send by the frontend for register
 const registerSchema = Joi.object().keys({
   email: Joi.string().email().required(),
   password: Joi.string().min(8).max(128).required(),
@@ -8,6 +9,7 @@ const registerSchema = Joi.object().keys({
   lastName: Joi.string().max(50).required(),
 });
 
+// schema to verify the input send by the frontend for login
 const loginSchema = Joi.object().keys({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
@@ -15,6 +17,7 @@ const loginSchema = Joi.object().keys({
 
 export function register(req: Request, res: Response, next: NextFunction) {
   const { email, password, firstName, lastName } = req.body;
+  // validate the register schema then call the move to the next function
   registerSchema
     .validateAsync({ email, password, firstName, lastName })
     .then((response) => {
@@ -30,6 +33,7 @@ export function register(req: Request, res: Response, next: NextFunction) {
 
 export function login(req: Request, res: Response, next: NextFunction) {
   const { email, password } = req.body;
+  // validate the login schema then call the move to the next function
   loginSchema
     .validateAsync({
       email,

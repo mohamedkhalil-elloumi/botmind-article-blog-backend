@@ -19,7 +19,7 @@ export class User extends BaseEntity {
 
   @Column()
   firstName: string;
-
+  
   @Column()
   lastName: string;
 
@@ -29,6 +29,10 @@ export class User extends BaseEntity {
   @Column("timestamp", { default: () => "CURRENT_TIMESTAMP" })
   createdAt: string;
 
+  /**
+   * Since users and articles table are linked so I choose a one-to-many relation with a cascade option 
+  to true for delete user purposes later 
+  */
   @OneToMany(() => Article, (article) => article.user, { cascade: true })
   @JoinColumn()
   articles: Article;
